@@ -1,0 +1,18 @@
+spring:
+    main:
+        lazy-initialization: true
+    datasource:
+        hikari:
+            idle-timeout: 30000
+            max-lifetime: 1800000
+            connection-timeout: 30000
+
+mysql:
+    local:
+        url: "jdbc:mysql://127.0.0.1:3306/user?useSSL=false"
+        username: "root"
+        password: "123456"
+    local2:
+        url: "jdbc:mysql://127.0.0.1:3306/mock?useSSL=false"
+        username: "root"
+        password: "123456"

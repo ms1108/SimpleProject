@@ -5,10 +5,13 @@ import User.JarTestBase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sql.DataSource;
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -21,12 +24,21 @@ public class Controller {
 
     @Autowired
     private RepeaterTestImpl repeaterTest;
+    @Autowired
+    private DataSource localDB;
 
     @GetMapping("/mock/{id}")
     public String mock(@PathVariable("id") String id) {
         System.out.println("run code");
         System.out.println("this is my mock id:".getClass());
         return "this is my mock id:" + id;
+    }
+
+    @GetMapping("/lazy")
+    public String lazy() {
+        System.out.println("1");
+        String queryResult = new JdbcTemplate(localDB).queryForObject("select name from t_user where id=1 limit 1;", String.class);
+        return queryResult;
     }
 
     @GetMapping("/regress/repeater")
