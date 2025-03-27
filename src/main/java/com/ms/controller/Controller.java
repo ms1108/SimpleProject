@@ -1,24 +1,22 @@
 package com.ms.controller;
 
-import User.JarTest;
 import User.JarTestBase;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.google.gson.Gson;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.sql.DataSource;
-import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.HashMap;
-import java.util.Map;
 
-
+@Api(tags = "用户管理")
 @RestController
 public class Controller {
 
@@ -50,6 +48,15 @@ public class Controller {
     public String nginx() {
         System.out.println("hello");
         return "hello";
+    }
+    @ApiOperation(value = "hello knife4j",notes="author = 作者;<br> api_des = 接口描述;")
+    //@ApiResponses(value = {@ApiResponse(code = 200, message = "返回描述")})
+    @PostMapping("/hello_knife4j")
+    //@ApiOperationSupport(author = "开发者")
+    //@ApiImplicitParam(name = "username",defaultValue = "3")
+    public String hello_knife4j(@RequestBody MyUser myUser) {
+        System.out.println("hello,"+ myUser.getUsername());
+        return "{\"name\":\"haha\",\"code\":1}";
     }
 
     //@GetMapping("/getJar")
