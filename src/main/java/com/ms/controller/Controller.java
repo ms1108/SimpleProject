@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.sql.DataSource;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Api(tags = "用户管理")
 @RestController
@@ -28,8 +31,19 @@ public class Controller {
     @GetMapping("/mock/{id}")
     public String mock(@PathVariable("id") String id) {
         System.out.println("run code");
-        System.out.println("this is my mock id:".getClass());
-        return "this is my mock id:" + id;
+        MockTest mockTest = new MockTest();
+        List<MyUser> myUsers = mockTest.mockTestList(id);
+        System.out.println("list:"+myUsers);
+        Map<String,Object> test = mockTest.mockTest("id:"+id);
+        System.out.println("map:"+test);
+        MyUser myUser = mockTest.mockTestMyUser(id);
+        System.out.println("myUser:"+myUser);
+        Map<String,MyUser> mockTestMapMyUser = mockTest.mockTestMapMyUser(id);
+        System.out.println("mockTestMapMyUser:"+mockTestMapMyUser);
+        System.out.println(mockTest.testException(id));
+        mockTest.testExceptionVoid(id);
+        //mockTest.requestOkhttp(id);
+        return id;
     }
 
     @GetMapping("/lazy")

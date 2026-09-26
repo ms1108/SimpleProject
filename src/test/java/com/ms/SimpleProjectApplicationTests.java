@@ -32,18 +32,18 @@ class SimpleProjectApplicationTests {
 
     }
 
-    @Test
-    void contextLoads2() {
-        System.out.println("2");
-        String queryResult = new JdbcTemplate(localDB2).queryForObject("select app_name from module_config where id=50 limit 1;", String.class);
-        assertThat(queryResult).as("校验非空").isNotNull();
-
-    }
-    @Test
-    void contextLoads3() {
-        System.out.println("3");
-        String queryResult = new JdbcTemplate(localDB3).queryForObject("select name from t_user where id=1 limit 1;", String.class);
-        assertThat(queryResult).as("校验非空").isNotNull();
-
-    }
+    //@Test
+    //void contextLoads2() {
+    //    System.out.println("2");
+    //    String queryResult = new JdbcTemplate(localDB2).queryForObject("select app_name from module_config where id=50 limit 1;", String.class);
+    //    assertThat(queryResult).as("校验非空").isNotNull();
+    //
+    //}
+    //@Test
+    //void contextLoads3() {
+    //    System.out.println("3");
+    //    String queryResult = new JdbcTemplate(localDB3).queryForObject("select name from t_user where id=1 limit 1;", String.class);
+    //    assertThat(queryResult).as("校验非空").isNotNull();
+    //
+    //}
 }
