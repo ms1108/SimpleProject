@@ -14,6 +14,7 @@ public class MockTest {
         System.out.println(param);
         Map<String,Object>  objects = new HashMap<>();
         objects.put("mockTest_not_target_mock",param);
+        objects.put("mockTest_not_target_mock2",param);
         return objects;
     }
     public List<MyUser> mockTestList(String param) {
