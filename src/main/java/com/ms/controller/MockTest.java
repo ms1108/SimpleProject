@@ -24,6 +24,14 @@ public class MockTest {
         MyUser myUser = new MyUser();
         myUser.setUsername(param+"_mockTestList_not_target_mock");
         myUser.setAge(1);
+        //测深拷贝
+        //friend
+        List<MyFriend> friends = new ArrayList<>();
+        MyFriend friend = new MyFriend();
+        friend.setUsername(param+"_mockTestList_not_target_mock_friend");
+        friend.setAge(2);
+        friends.add(friend);
+        myUser.setFriend(friends);
         objects.add(myUser);
         return objects;
     }
@@ -44,6 +52,14 @@ public class MockTest {
         myUser.setAge(1);
         map.put("user",myUser);
         return map;
+    }
+    public Boolean mockTestBoolean(String param) {
+        System.out.println(param);
+        return true;
+    }
+    public String mockTestString(String param) {
+        System.out.println(param);
+        return "1";
     }
 
     public Map<String,Object> testException(String id) {

@@ -42,6 +42,10 @@ public class Controller {
         System.out.println("mockTestMapMyUser:"+mockTestMapMyUser);
         System.out.println(mockTest.testException(id));
         mockTest.testExceptionVoid(id);
+        Boolean aBoolean = mockTest.mockTestBoolean(id);
+        System.out.println("mockTestBoolean:"+aBoolean);
+        String aString = mockTest.mockTestString(id );
+        System.out.println("mockTestString:"+aString);
         //mockTest.requestOkhttp(id);
         return id;
     }

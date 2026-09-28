@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @ApiModel(description = "User details")
-public class MyUser {
+public class MyFriend {
 
     @ApiModelProperty(value = "username", example = "haha")
     private String username = "myusername";
@@ -17,7 +17,7 @@ public class MyUser {
     @ApiModelProperty(value = "password", example = "1", required = true)
     private Integer age =0;
 
-    private List<MyFriend> friend=new ArrayList<>();
+    private List<String> friend=new ArrayList<>();
     //@ApiModelProperty(value = "test", example = "{\"test\": \"test22\"}", required = true)
     //private Test test;
     //
