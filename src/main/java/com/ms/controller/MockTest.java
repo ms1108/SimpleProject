@@ -11,7 +11,7 @@ import java.util.*;
 public class MockTest {
     public Map<String,Object> mockTest(String param) {
         //mock工具，会在执行完代码之后才修改数据
-        System.out.println(param);
+        System.out.println("mockTest"+param);
         Map<String,Object>  objects = new HashMap<>();
         objects.put("mockTest_not_target_mock",param);
         objects.put("mockTest_not_target_mock2",param);
@@ -19,7 +19,7 @@ public class MockTest {
     }
     public List<MyUser> mockTestList(String param) {
         //mock工具，会在执行完代码之后才修改数据
-        System.out.println(param);
+        System.out.println("mockTestList"+param);
         List<MyUser> objects = new ArrayList<>();
         MyUser myUser = new MyUser();
         myUser.setUsername(param+"_mockTestList_not_target_mock");
@@ -37,7 +37,7 @@ public class MockTest {
     }
     public MyUser mockTestMyUser(String param) {
         //mock工具，会在执行完代码之后才修改数据
-        System.out.println(param);
+        System.out.println("mockTestMyUser"+param);
         MyUser myUser = new MyUser();
         myUser.setUsername(param+"_mockTestMyUser_not_target_mock");
         myUser.setAge(1);
@@ -45,7 +45,7 @@ public class MockTest {
     }
 
     public Map<String,MyUser> mockTestMapMyUser(String param) {
-        System.out.println(param);
+        System.out.println("mockTestMapMyUser"+param);
         Map<String, MyUser> map = new HashMap<>();
         MyUser myUser = new MyUser();
         myUser.setUsername(param+"_mockTestMapMyUser_not_target_mock");
@@ -54,16 +54,17 @@ public class MockTest {
         return map;
     }
     public Boolean mockTestBoolean(String param) {
-        System.out.println(param);
+        System.out.println("mockTestBoolean"+param);
         return true;
     }
     public String mockTestString(String param) {
-        System.out.println(param);
+        System.out.println("mockTestString"+param);
         return "1";
     }
 
     public Map<String,Object> testException(String id) {
-        if (id.equals("exception")) {
+        System.out.println("testExceptionVoid"+id);
+        if (id.equals("exception") || id.equals("测试异常")) {
             System.out.println("主动抛出异常");
             throw new RuntimeException("测试异常");
         }
@@ -72,6 +73,7 @@ public class MockTest {
         return map;
     }
     public void testExceptionVoid(String id) {
+        System.out.println("testExceptionVoid"+id);
         if (id.equals("exceptionVoid")) {
             System.out.println("主动抛出异常");
             throw new RuntimeException("测试异常");
@@ -82,6 +84,7 @@ public class MockTest {
     }
 
     public String requestOkhttp(String id) {
+        System.out.println("requestOkhttp"+id);
         OkHttpClient client = new OkHttpClient();
 
         // 构建请求
