@@ -61,6 +61,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.67</version>
+        </dependency>
+
+        <dependency>
                 <groupId>my.jar</groupId>
                 <artifactId>my-jar</artifactId>
                 <version>1.0</version>

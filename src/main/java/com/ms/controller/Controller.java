@@ -41,6 +41,7 @@ public class Controller {
         Map<String,MyUser> mockTestMapMyUser = mockTest.mockTestMapMyUser(id);
         System.out.println("mockTestMapMyUser:"+mockTestMapMyUser);
         System.out.println(mockTest.testException(id));
+        System.out.println("mockResponseMyUser："+mockTest.mockResponseMyUser(id));
         mockTest.testExceptionVoid(id);
         Boolean aBoolean = mockTest.mockTestBoolean(id);
         System.out.println("mockTestBoolean:"+aBoolean);

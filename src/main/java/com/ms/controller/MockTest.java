@@ -1,9 +1,9 @@
 package com.ms.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.JsonObject;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.*;
@@ -53,6 +53,29 @@ public class MockTest {
         map.put("user",myUser);
         return map;
     }
+    public Response<Page<MyUser>> mockResponseMyUser(String param) {
+        //mock工具，会在执行完代码之后才修改数据
+        System.out.println("mockResponseMyUser" + param);
+        Response<Page<MyUser>> result = new Response<>();
+        result.setStatus(200);
+        Page<MyUser> page = new Page<>();
+        page.setPageNum(1);
+        page.setPageSize(10);
+        page.setTotal(100);
+        List<MyUser> data = new ArrayList<>();
+        MyUser u1 = new MyUser();
+        u1.setUsername("user1");
+        u1.setAge(20);
+        MyUser u2 = new MyUser();
+        u2.setUsername("user2");
+        u2.setAge(22);
+        data.add(u1);
+        data.add(u2);
+        page.setData(data);
+        result.setPage(page);
+        return result;
+    }
+
     public Boolean mockTestBoolean(String param) {
         System.out.println("mockTestBoolean"+param);
         return true;
@@ -95,7 +118,7 @@ public class MockTest {
                 .build();
 
         // 发送请求并处理响应
-        try (Response response = client.newCall(request).execute()) {
+        try (okhttp3.Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
                 throw new IOException("请求失败: " + response);
             }
